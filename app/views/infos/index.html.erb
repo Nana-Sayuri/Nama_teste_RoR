@@ -1,0 +1,35 @@
+<% if !flash[:notice].blank? %>
+  <div class = "alert alert-info">
+     <% flash.each do |name, msg| %>
+     <%= content_tag :div, msg, class: 'alert alert-info' %>
+     <% end %>
+   </div>
+<% end %>
+
+<br />
+
+<%= link_to "Novo Upload", new_info_path, class: "btn btn-primary" %>
+<br />
+<br />
+
+<table>
+   <thead>
+      <tr>
+         <th>Nome do Arquivo</th>
+         <th>Atalho</th>
+         <th> </th>
+      </tr>
+   </thead>
+   
+   <tbody>
+      <% @infos.each do |info| %>
+         <tr>
+            <td><%= info.name %></td>
+            <td><%= link_to "Visualizar Arquivo", sales_url %></td>
+            <td><%= button_to "Excluir",  info, method: :delete, class: "btn btn-danger", data: { confirm: "Confirma a exclusão do arquivo: #{info.name}?"} %></td>
+         </tr>
+         
+      <% end %>
+   </tbody>
+   
+</table>
