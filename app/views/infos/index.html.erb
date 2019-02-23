@@ -20,7 +20,6 @@
          <th> </th>
       </tr>
    </thead>
-   
    <tbody>
       <% @infos.each do |info| %>
          <tr>
@@ -28,8 +27,6 @@
             <td><%= link_to "Visualizar Arquivo", sales_url %></td>
             <td><%= button_to "Excluir",  info, method: :delete, class: "btn btn-danger", data: { confirm: "Confirma a exclusão do arquivo: #{info.name}?"} %></td>
          </tr>
-         
       <% end %>
    </tbody>
-   
 </table>

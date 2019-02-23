@@ -1,3 +1,4 @@
+
 class InfosController < ApplicationController
   before_action :set_info, only: [:show, :edit, :update, :destroy]
 
@@ -11,26 +12,21 @@ class InfosController < ApplicationController
 
   def create
     @info = Info.new(info_params)
-    if @info.save
+    if @info.save #carrierwave precisa salvar o arquivo para acessar
       file = @info.get_file
       file_info = file.read
-      file_value = 0
+      file_value = 0 #set pra retomar o calculo da receita das venda
         if file_info.blank?
-        flash[:error] = "Arquivo sem dados!"
         @info.destroy
+        redirect_to infos_url, notice:"Arquivo sem dados!"
         elsif file_info.split("\n").count <= 1
-        flash[:error] = "Conteúdo inválido!"
         @info.destroy
-        end
-          
+        redirect_to infos_url, notice:"Conteúdo inválido!"
+        elsif           
           file_info.split("\n").each_with_index do |line, index|
             line = line.split("\t")
-              if line.size !=6
-                flash[:notice] = "Conteúdo inválido!"
-                @info.destroy  #como parar o loop aqui?
-              end #se colocar else não soma última linha >_<
             next unless index > 0
-            @sale = Sale.new() #como chamar outra classe?
+            @sale = Sale.new() #como chamar outra classe? precisa manter o 
             @sale_buyer = line [0],
             @sale_description = line[1],
             @sale_unity_price = line[2],
@@ -40,7 +36,8 @@ class InfosController < ApplicationController
             file_value += line[2].to_f * line[3].to_i  #calculando mas está atribuindo?
           end
         file_value
-        redirect_to infos_url, notice: "O arquivo #{@info.name} foi adicionado com sucesso. O total de vendas foi de #{file_value}"
+        redirect_to infos_url, notice: "O arquivo #{@info.name} foi adicionado com sucesso. O total de vendas foi de #{file_value}" 
+        end
       else
       #destroy ?
       render "new"
@@ -56,18 +53,10 @@ class InfosController < ApplicationController
     redirect_to infos_path, notice: "O arquivo #{@info.name} foi excluído."
   end
 
-  def @sale.parse_and_save(line) 
-    buyer = line [0],
-    description = line[1],
-    unity_price = line[2],
-    quantity = line[3],
-    address = line[4],
-    supplier = line[5]
-  end  
 
   private
   def set_info
-    @info = Info.find(params[:id])  	
+    @info = Info.find(params[:id])    
   end
 
   def info_params
