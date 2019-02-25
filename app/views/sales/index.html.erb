@@ -1,0 +1,52 @@
+<% if !flash[:notice].blank? %>
+  <div class = "alert alert-info">
+     <% flash.each do |name, msg| %>
+     <%= content_tag :div, msg, class: 'alert alert-info' %>
+     <% end %>
+   </div>
+<% end %>
+
+<h2>Vendas</h2>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Comprador</th>
+    <th>Descrição</th>
+    <th>Quantidade</th>
+    <th>Preço Unitario</th>
+    <th>Endereço</th>
+    <th>Fornecedor</th>
+    <th>Delete</th>
+
+  </tr>
+
+  <% @sales.each do |sale| %>
+  <tr>
+    <td><%= sale.id %></td>
+    <td><%= sale.buyer %></td>
+    <td><%= sale.description %></td>
+    <td><%= sale.quantity %></td>
+    <td><%= sale.unity_price %></td>
+    <td><%= sale.address %></td>
+    <td><%= sale.supplier %></td>
+    <td> <%= link_to 'X',
+    sale_path(sale),
+    method: :delete,
+    data: { :confirm => "Confirma a exclusão do arquivo?" }
+     %>
+    </td>
+  </tr>  
+  <% end %>
+</table>
+
+</br>
+
+<div class="btn-group">
+  <%= form_for :sale, url: sales_path, html: { multipart: true } do |f| %>
+    <%= f.label :process_file, 'File to Upload' %>
+    </br>
+    <%= f.file_field :process_file,  accept: 'text/plain' %></br>
+    <%= f.submit 'Carregar Arquivo' %>
+  <% end %>
+</div>

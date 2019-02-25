@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  buyer: MyString
+  description: MyString
+  unity_price: 9.99
+  quantity: 1
+  address: MyString
+  supplier: MyString
+
+two:
+  buyer: MyString
+  description: MyString
+  unity_price: 9.99
+  quantity: 1
+  address: MyString
+  supplier: MyString
