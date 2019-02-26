@@ -1,52 +1,54 @@
 <% if !flash[:notice].blank? %>
   <div class = "alert alert-info">
      <% flash.each do |name, msg| %>
-     <%= content_tag :div, msg, class: 'alert alert-info' %>
+     <%= content_tag :div, msg, class: "alert alert-info" %>
      <% end %>
    </div>
 <% end %>
 
+</br>
 <h2>Vendas</h2>
+</br>
 
-<table>
-  <tr>
-    <th>ID</th>
-    <th>Comprador</th>
-    <th>Descrição</th>
-    <th>Quantidade</th>
-    <th>Preço Unitario</th>
-    <th>Endereço</th>
-    <th>Fornecedor</th>
-    <th>Delete</th>
+<table class="table table-stripped table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th>ID</th>
+      <th>Comprador</th>
+      <th>Descrição</th>
+      <th>Quantidade</th>
+      <th>Preço Unitario</th>
+      <th>Endereço</th>
+      <th>Fornecedor</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
 
-  </tr>
-
-  <% @sales.each do |sale| %>
-  <tr>
-    <td><%= sale.id %></td>
-    <td><%= sale.buyer %></td>
-    <td><%= sale.description %></td>
-    <td><%= sale.quantity %></td>
-    <td><%= sale.unity_price %></td>
-    <td><%= sale.address %></td>
-    <td><%= sale.supplier %></td>
-    <td> <%= link_to 'X',
-    sale_path(sale),
-    method: :delete,
-    data: { :confirm => "Confirma a exclusão do arquivo?" }
-     %>
-    </td>
-  </tr>  
-  <% end %>
+  <tbody>
+    <% @sales.each do |sale| %>
+    <tr>
+      <td><%= sale.id %></td>
+      <td><%= sale.buyer %></td>
+      <td><%= sale.description %></td>
+      <td><%= sale.quantity %></td>
+      <td><%= sale.unity_price %></td>
+      <td><%= sale.address %></td>
+      <td><%= sale.supplier %></td>
+      <td> <%= link_to "X", sale_path(sale), method: :delete, data: { :confirm => "Confirma a exclusão do arquivo?" } %>
+      </td>
+    </tr>  
+    <% end %>
+  </tbody>
 </table>
 
 </br>
 
-<div class="btn-group">
+<div class="input-group">
   <%= form_for :sale, url: sales_path, html: { multipart: true } do |f| %>
-    <%= f.label :process_file, 'File to Upload' %>
+    <%= f.label :process_file, "Arquivo para Upload" %>
     </br>
-    <%= f.file_field :process_file,  accept: 'text/plain' %></br>
-    <%= f.submit 'Carregar Arquivo' %>
+    <%= f.file_field :process_file,  accept: "text/plain", class: "btn btn-default" %>
+    </br>
+    <%= f.submit "Carregar Arquivo", class: "btn btn-primary" %>
   <% end %>
-</div>
+</div>  

@@ -1,4 +1,5 @@
 class Sale < ApplicationRecord
+#validates :process_file, presence: true
 
   attr_accessor :process_file
 
