@@ -1,24 +1,91 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Versões do Ruby e Rails
+Ruby - 2.6.0
+Rails - 5.2.2
 
-Things you may want to cover:
+### Faça o clone do projeto
+```
+git clone git@github.com:Nana-Sayuri/Nama_teste_RoR.g
+```
 
-* Ruby version
+### Acesse a pasta do projeto
+```
+cd Nama_teste_RoR
+```
 
-* System dependencies
+### Instale as gems e suas dependências
+```
+bunde install
+```
 
-* Configuration
+### Crie o banco e rode as migrates
+```
+rake db:create && rake db:migrate
+```
+### Testando o projeto
+* Teste o projeto fazendo o upload do arquivo que está na raiz do projeto.
 
-* Database creation
+## Testes automatizados
+Para realizar os testes automatizados basta seguir o passo a passo:
 
-* Database initialization
+### Crie o banco de dados e suas tabelas para ambiente de teste
+```
+RAILS_ENV=test rake db:create && RAILS_ENV=test rake db:migrate
+```
 
-* How to run the test suite
+### Rode o comando abaixo para realizar todos os testes:
+```
+RAILS_ENV=test rake
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+### Se preferir pode rodar o teste específico:
+```
+ruby -I test "CAMINHO PARA O ARQUIVO"
+```
+como no ex.: ```RAILS_ENV=test ruby -I test test/models/person_test.rb```
 
-* Deployment instructions
 
-* ...
+
+# Desafio de programação
+A idéia deste desafio é nos permitir avaliar melhor as habilidades de candidatos à vagas de programador, de vários níveis.
+
+Este desafio deve ser feito por você em sua casa. Gaste o tempo que você quiser, porém normalmente você não deve precisar de mais do que algumas horas.
+
+## Instruções de entrega do desafio
+1. Crie seu app Rails e inicialize um repositório git.
+2. Faça commits (e pushs) conforme for terminando features.
+3. Crie instruções de instalação e execução do aplicativo em seu README.md
+4. Por fim, envie o link do seu repositorio para avaliarmos seu código
+
+## Descrição do projeto
+Você recebeu um arquivo de texto com os dados de vendas da empresa. Precisamos criar uma maneira para que estes dados sejam importados para um banco de dados.
+
+Sua tarefa é criar uma interface web que aceite upload de arquivos, normalize os dados e armazene-os no banco de dados.
+
+Sua aplicação web DEVE:
+
+1. Aceitar (via um formulário) o upload de arquivos text, com dados separados por TAB testar o aplicativo usando o arquivo fornecido. A primeira linha do arquivo tem o nome das colunas. Você pode assumir que as colunas estarão sempre nesta ordem, e que sempre haverá uma linha de cabeçalho. Um arquivo de exemplo chamado 'dados.txt' está incluído neste repositório.
+2. Interpretar ("parsear") o arquivo recebido, normalizar os dados, e salvar corretamente a informação em um banco de dados relacional.
+3. Exibir todos os registros importados, bem como a receita bruta total dos registros contidos no arquivo enviado após o upload + parser.
+4. A aplicação deve ser escrita obrigatoriamente em: Ruby 2.2+ Rails 5 e SQLite 
+5. Ser simples de configurar e rodar a partir das instruções fornecidas, funcionando em ambiente compatível com Unix (Linux ou Mac OS X). Ela deve utilizar apenas linguagens e bibliotecas livres ou gratuitas.
+6. Ter um teste de model e controller automatizado para a funcionalidade pedida
+7. Ter uma boa aparecia e ser fácil de usar
+
+## Avaliação
+Seu projeto será avaliado de acordo com os seguintes critérios. 
+
+1. Sua aplicação atende funcionalmente o que foi pedido
+2. 100% de cobertura de testes em models e controllers.
+3. Você documentou a maneira de configurar o ambiente e rodar sua aplicação na maquina do avaliador
+4. Você seguiu as instruções enviadas
+5. Voce segue as boas práticas de programação e entrega para o Cliente
+6. O código escrito é facil de entender e manter
+7. Você se preocupa com o uso do aplicativo pelo Usuário
+
+Adicionalmente, tentaremos verificar a sua familiarização com as bibliotecas padrões, bem como sua experiência com programação orientada a objetos a partir da estrutura de seu projeto, preocupação com o objetivo da aplicação e do seu uso pelo usuário, suporte e manutenção do código por outros desenvolvdores
+
+### Referência
+
+Este desafio foi baseado neste outro desafio: https://github.com/lschallenges/data-engineering
