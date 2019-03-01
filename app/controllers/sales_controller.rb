@@ -37,7 +37,6 @@ class SalesController < ApplicationController
   end
 
   private
-
   def set_sale
     @sale = Sale.find(params[:id])
   end
