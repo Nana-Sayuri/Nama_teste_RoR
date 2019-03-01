@@ -43,6 +43,6 @@ class SalesController < ApplicationController
   end
 
   def sale_params
-    params.require(:sale).permit(:buyer, :description, :unity_price, :quantity, :address, :supplier)
+    params.require(:sale).permit(:process_file, :buyer, :description, :unity_price, :quantity, :address, :supplier)
   end
 end
