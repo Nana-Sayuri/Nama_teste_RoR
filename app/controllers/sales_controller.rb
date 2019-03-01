@@ -1,5 +1,5 @@
 class SalesController < ApplicationController
-  before_action :set_sale, only: %i[show edit update destroy]
+  before_action :set_sale, only: %w[show edit update destroy]
 
   def index
     @sales = Sale.all  	
