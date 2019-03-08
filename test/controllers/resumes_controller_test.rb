@@ -1,9 +1,13 @@
 require 'test_helper'
 
 class ResumesControllerTest < ActionDispatch::IntegrationTest
-  test "should get index" do
-    get resumes_index_url
+  
+    test "should get index" do
+    get :index
+    assert_equal "index", @controller.action_name
     assert_response :success
+    assert_not_empty assigns(:resume)
+    assert_match 'Resumes', @response.body
   end
 
   test "should get new" do

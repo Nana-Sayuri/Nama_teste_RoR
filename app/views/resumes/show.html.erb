@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Buyer:</strong>
+  <%= @resume.buyer %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @resume.description %>
+</p>
+
+<p>
+  <strong>Unit price:</strong>
+  <%= @resume.unit_price %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @resume.amount %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @resume.address %>
+</p>
+
+<p>
+  <strong>Provider:</strong>
+  <%= @resume.provider %>
+</p>
+
+<div class="btn-group">
+  <%= form_for :resume, url: resumes_path, html: { multipart: true } do |f| %>
+    <%= f.label :process_file, 'File to Upload' %>
+    </br>
+    <%= f.file_field :process_file,  accept: 'text/plain' %></br>
+    <%= f.submit 'Process file' %>
+  <% end %>
+</div>
+
+
+<%= link_to 'Back', resumes_path %>
