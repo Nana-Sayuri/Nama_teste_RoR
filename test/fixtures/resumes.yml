@@ -7,3 +7,6 @@ one:
 two:
   name: MyString
   attachment: MyString
+
+resume_with_attachment: # generated id: 605975481
+  attachment: 'teste.txt'

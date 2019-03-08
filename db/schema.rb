@@ -10,13 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_14_235643) do
+ActiveRecord::Schema.define(version: 2019_02_17_211054) do
 
   create_table "resumes", force: :cascade do |t|
     t.string "name"
     t.string "attachment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "string"
+    t.string "buyer"
+    t.string "description"
+    t.decimal "unit_price", precision: 12, scale: 6
+    t.integer "amount"
+    t.string "address"
+    t.string "provider"
+    t.string "file_name"
+    t.string "attachments"
   end
 
 end

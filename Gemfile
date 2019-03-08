@@ -27,7 +27,11 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# upload files from Ruby applications
 gem 'carrierwave', '~>1.3.1'
+# Gemfile 
+source "https://rubygems.org"
+gem "minitest"
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -58,6 +62,8 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  # coverage analysis tool
+  gem 'simplecov', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
