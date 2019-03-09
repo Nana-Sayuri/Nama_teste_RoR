@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "teste_desenvolvedor",
+=======
+  "name": "novoprojeto",
+>>>>>>> a4c8540203708fb1f807e31cece412980455454c
   "private": true,
   "dependencies": {}
 }

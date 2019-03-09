@@ -1,0 +1,34 @@
+<% if !flash[:notice].blank? %>
+   <div class = "alert alert-info">
+      <%= flash[:notice] %>
+   </div>
+<% end %>
+
+<br />
+
+<%= link_to "Novo Arquivo", new_resume_path, class: "btn btn-primary" %>
+<br />
+<br />
+
+<table>
+   <thead>
+      <tr>
+         <th>Nome do Arquivo</th>
+         <th>Atalho</th>
+         <th> </th>
+      </tr>
+   </thead>
+   
+   <tbody>
+      <% @resumes.each do |resume| %>
+         
+         <tr>
+            <td><%= resume.name %></td>
+            <td><%= link_to "Visualizar Arquivo", resume.attachment_url %></td>
+            <td><%= button_to "Excluir",  resume, method: :delete, class: "btn btn-danger", data: { confirm: "Confirma a exclusão do arquivo: #{resume.name}?"} %></td>
+         </tr>
+         
+      <% end %>
+   </tbody>
+   
+</table>
